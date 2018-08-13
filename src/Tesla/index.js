@@ -1,10 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
+import {FixedAspectRatio} from '../FixedAspectRatio'
 import {Wheels} from './Wheels'
 
-const TeslaWrapper = styled.div`
-  position: relative;
-
+const TeslaWrapper = styled(FixedAspectRatio).attrs({
+  w: 2.55,
+  h: 1
+})`
   @media (max-width: 500px) {
     margin: 0 -1.4rem;
   }
