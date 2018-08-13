@@ -3,11 +3,10 @@ import styled, {keyframes} from 'styled-components'
 import {FixedAspectRatio} from '../FixedAspectRatio'
 
 const spin = keyframes`
-  from { transform: rotate(360deg); }
-  to { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 `
 
-const getRotationDuration = speed => (((70 - speed) / 25) + 1) * 0.5
+const getRotationDuration = speed => 0.8 - ((speed - 45) / 62.5)
 
 const WheelWrapper = styled(FixedAspectRatio)`
   width: 9%;
@@ -16,6 +15,7 @@ const WheelWrapper = styled(FixedAspectRatio)`
   top: 48%;
 
   animation: ${spin} ${({speed}) => getRotationDuration(speed)}s infinite linear;
+  animation-direction: reverse;
 
   &:first-of-type {
     left: 24.9%;
