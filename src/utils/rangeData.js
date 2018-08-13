@@ -1,6 +1,6 @@
 export const rangeData = {
   '60': {
-    19: {
+    small: {
       on: {
         speed: {
           45: {
@@ -106,7 +106,7 @@ export const rangeData = {
         }
       }
     },
-    21: {
+    large: {
       on: {
         speed: {
           45: {
@@ -214,7 +214,7 @@ export const rangeData = {
     }
   },
   '60D': {
-    19: {
+    small: {
       on: {
         speed: {
           45: {
@@ -320,7 +320,7 @@ export const rangeData = {
         }
       }
     },
-    21: {
+    large: {
       on: {
         speed: {
           45: {
@@ -428,7 +428,7 @@ export const rangeData = {
     }
   },
   '75': {
-    19: {
+    small: {
       on: {
         speed: {
           45: {
@@ -534,7 +534,7 @@ export const rangeData = {
         }
       }
     },
-    21: {
+    large: {
       on: {
         speed: {
           45: {
@@ -642,7 +642,7 @@ export const rangeData = {
     }
   },
   '75D': {
-    19: {
+    small: {
       on: {
         speed: {
           45: {
@@ -748,7 +748,7 @@ export const rangeData = {
         }
       }
     },
-    21: {
+    large: {
       on: {
         speed: {
           45: {
@@ -856,7 +856,7 @@ export const rangeData = {
     }
   },
   '90D': {
-    19: {
+    small: {
       on: {
         speed: {
           45: {
@@ -962,7 +962,7 @@ export const rangeData = {
         }
       }
     },
-    21: {
+    large: {
       on: {
         speed: {
           45: {
@@ -1070,7 +1070,7 @@ export const rangeData = {
     }
   },
   P100D: {
-    19: {
+    small: {
       on: {
         speed: {
           45: {
@@ -1176,7 +1176,7 @@ export const rangeData = {
         }
       }
     },
-    21: {
+    large: {
       on: {
         speed: {
           45: {
