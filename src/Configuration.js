@@ -1,38 +1,78 @@
 import React from 'react'
+import merge from 'lodash.merge'
 import {config} from './config'
+
+const STORAGE_KEY = '@@tesla-calc/config'
+
+const liftValues = obj =>
+  Object.entries(obj).reduce(
+    (acc, [key, value]) => ({
+      ...acc,
+      [key]: value.value
+    }),
+    {}
+  )
+
+const lowerValues = obj =>
+  Object.entries(obj).reduce(
+    (acc, [key, value]) => ({
+      ...acc,
+      [key]: {value}
+    }),
+    {}
+  )
 
 const ConfigContext = React.createContext({})
 
+const getInitialConfig = () => {
+  const oldConfig = localStorage.getItem(STORAGE_KEY)
+  if (oldConfig != null) {
+    return JSON.parse(oldConfig)
+  }
+
+  return {
+    speed: 45,
+    temperature: -10,
+    wheelSize: 'small',
+    isACRunning: false
+  }
+}
+
 export class ConfigProvider extends React.Component {
   change = key => value =>
-    this.setState(({[key]: old}) => ({[key]: {...old, value}}))
+    this.setState(
+      ({[key]: old}) => ({[key]: {...old, value}}),
+      this.onAfterChange
+    )
 
-  state = {
-    speed: {
-      value: 45,
-      values: config.speeds,
-      change: this.change('speed'),
-      name: 'Speed (MPH)'
-    },
-    temperature: {
-      value: -10,
-      values: config.temperatures,
-      change: this.change('temperature'),
-      name: 'Temperature (℉)'
-    },
-    wheelSize: {
-      value: 'small',
-      values: config.wheelSizes,
-      change: this.change('wheelSize'),
-      name: 'Wheel Size'
-    },
-    isACRunning: {
-      value: false,
-      values: config.airConRunningStates,
-      change: this.change('isACRunning'),
-      name: 'AC Running'
-    }
-  }
+  prepareConfig = configuration =>
+    merge(lowerValues(configuration), {
+      speed: {
+        values: config.speeds,
+        change: this.change('speed'),
+        name: 'Speed (MPH)'
+      },
+      temperature: {
+        values: config.temperatures,
+        change: this.change('temperature'),
+        name: 'Temperature (℉)'
+      },
+      wheelSize: {
+        values: config.wheelSizes,
+        change: this.change('wheelSize'),
+        name: 'Wheel Size'
+      },
+      isACRunning: {
+        values: config.airConRunningStates,
+        change: this.change('isACRunning'),
+        name: 'AC Running'
+      }
+    })
+
+  state = this.prepareConfig(getInitialConfig())
+
+  onAfterChange = () =>
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(liftValues(this.state)))
 
   render() {
     return (
@@ -44,15 +84,6 @@ export class ConfigProvider extends React.Component {
 }
 
 export const ConfigConsumer = ConfigContext.Consumer
-
-const liftValues = obj =>
-  Object.keys(obj).reduce(
-    (acc, key) => ({
-      ...acc,
-      [key]: obj[key].value
-    }),
-    {}
-  )
 
 export const withConfigValues = WrappedComponent => {
   const ConfigComponent = props => {
