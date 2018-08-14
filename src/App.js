@@ -9,7 +9,7 @@ import {ConfigConsumer, ConfigProvider} from './Configuration'
 const PageWrapper = styled.main`
   max-width: 1080px;
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 0 1rem 5rem;
 `
 
 const RowWrapper = styled.div`
