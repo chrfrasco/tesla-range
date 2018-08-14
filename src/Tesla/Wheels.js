@@ -8,10 +8,9 @@ const spin = keyframes`
 
 const getRotationDuration = speed => 0.8 - ((speed - 45) / 62.5)
 
-/* !important used due to react-snap bug */
 const WheelWrapper = styled(FixedAspectRatio)`
-  width: 9% !important;
-  position: absolute !important;
+  width: 9%;
+  position: absolute;
   top: 48%;
 
   animation: ${spin} ${({speed}) => getRotationDuration(speed)}s infinite linear;
