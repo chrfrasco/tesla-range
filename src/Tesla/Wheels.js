@@ -28,7 +28,8 @@ const WheelWrapper = styled(FixedAspectRatio)`
 
 const Wheel = styled.img.attrs({
   src: ({size}) =>
-    size === 'small' ? '/assets/wheel.png' : '/assets/wheel-large.png'
+    size === 'small' ? '/assets/wheel.png' : '/assets/wheel-large.png',
+  alt: 'Tesla car wheel'
 })`
   display: block;
   width: 100%;

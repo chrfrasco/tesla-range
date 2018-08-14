@@ -13,7 +13,8 @@ const TeslaWrapper = styled(FixedAspectRatio).attrs({
 `
 
 const Car = styled.img.attrs({
-  src: '/assets/tesla.jpg'
+  src: '/assets/tesla.jpg',
+  alt: 'Tesla car body'
 })`
   max-width: 100%;
   display: block;
